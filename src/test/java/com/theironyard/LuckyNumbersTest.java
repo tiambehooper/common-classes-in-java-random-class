@@ -64,7 +64,7 @@ public class LuckyNumbersTest extends TestifierTest{
 
         /* assert */
         assertThat("fiveLuckyNumbers should use a reference to the rand property",
-                source, RegexMatcher.matches("^.*?FieldAccessExpr\\[rand\\].*?$"));
+                source, RegexMatcher.matches("^.*?MethodCallExpr ((NameExpr\\[rand\\]|(ThisExpr FieldAccessExpr\\[rand\\])) MethodName\\[nextInt\\]).*?$"));
         assertThat("fiveLuckyNumbers should not instantiate Random",
                 source, not(RegexMatcher.matches("^.*?ObjectCreationExpr ClassOrInterfaceType\\[Random\\].*?$")));
 
